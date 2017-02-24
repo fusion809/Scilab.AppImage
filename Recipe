@@ -39,4 +39,12 @@ get_desktopintegration scilab
 cd ..
 
 ARCH="x86_64"
-generate_appimage
+echo "VERSION is $VERSION"
+
+mkdir -p out
+
+rm -f out/*.AppImage || true
+
+curl -sL "https://github.com/probonopd/AppImageKit/releases/download/6/AppImageAssistant_6-x86_64.AppImage" > AppImageAssistant
+chmod a+x AppImageAssistant
+./AppImageAssistant ./Scilab.AppDir/ out/$APP"-"$VERSION"-"$ARCH".AppImage"
